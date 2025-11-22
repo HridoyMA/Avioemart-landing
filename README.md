@@ -117,9 +117,3 @@ src/
 └── App.tsx         # Main app component
 ```
 
-## Notes
-
-- The `vercel.json` file is configured for SPA routing (all routes redirect to index.html)
-- Vercel automatically handles the build and deployment process
-- Each push to your main branch will trigger a new deployment
-

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Building2, Globe, Shield, CheckCircle } from 'lucide-react';
-import { Card } from '../ui';
 
 interface Partner {
   name: string;

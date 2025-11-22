@@ -1,6 +1,5 @@
 import React from 'react';
 import { StatCardProps } from '../../lib/types';
-import { cn } from '../../lib/utils';
 
 export const StatCard: React.FC<StatCardProps> = ({
   value,

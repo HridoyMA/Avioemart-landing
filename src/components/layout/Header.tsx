@@ -50,8 +50,8 @@ export const Header: React.FC = () => {
             <div className="hidden md:flex items-center gap-6" role="menubar">
               {/* Navigation Links */}
               {NAV_LINKS.map((link) => (
-                <div key={link.label} className="relative" role="none" ref={link.hasDropdown ? dropdownRef : null}>
-                  {link.hasDropdown ? (
+                <div key={link.label} className="relative" role="none" ref={'hasDropdown' in link && link.hasDropdown ? dropdownRef : null}>
+                  {'hasDropdown' in link && link.hasDropdown ? (
                     <div className="relative">
                       <button 
                         className="flex items-center gap-1 text-primary hover:text-primary-dark transition-colors"
