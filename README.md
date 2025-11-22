@@ -10,6 +10,22 @@ AI-Powered Aviation Marketplace landing page built with Vite + React + TypeScrip
 yarn install
 ```
 
+### Setup Git Hooks (Pre-commit)
+
+After installation, set up Husky for pre-commit hooks:
+
+```bash
+yarn prepare
+```
+
+This will set up Git hooks that automatically:
+- Format code with Prettier
+- Fix linting errors
+- Run TypeScript type checking
+- Run build check
+
+**Note:** If you skip this step, pre-commit hooks won't work, but you can still commit manually.
+
 ### Development
 
 ```bash
@@ -26,6 +42,25 @@ yarn build
 
 ```bash
 yarn preview
+```
+
+### Code Quality
+
+```bash
+# Format code
+yarn format
+
+# Check formatting
+yarn format:check
+
+# Lint code
+yarn lint
+
+# Fix linting errors
+yarn lint:fix
+
+# Type check
+yarn type-check
 ```
 
 ## Deployment to Vercel
