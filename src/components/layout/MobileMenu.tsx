@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { X, ChevronDown } from 'lucide-react';
 import { NAV_LINKS } from '../../lib/constants';
 import { Button } from '../ui';
@@ -17,11 +20,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
       {/* Backdrop */}
-      <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+
       {/* Menu Panel */}
       <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl">
         <div className="flex flex-col h-full">
@@ -48,29 +48,40 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                       className="w-full flex items-center justify-between p-3 text-primary hover:bg-gray-100 rounded-md transition-colors"
                     >
                       <span>{link.label}</span>
-                      <ChevronDown 
-                        className={cn('w-4 h-4 transition-transform', resourcesOpen && 'rotate-180')}
+                      <ChevronDown
+                        className={cn(
+                          'w-4 h-4 transition-transform',
+                          resourcesOpen && 'rotate-180'
+                        )}
                       />
                     </button>
                     {resourcesOpen && (
                       <div className="pl-4 mt-2 space-y-1">
-                        <a href="#" className="block p-2 text-gray-600 hover:text-primary">
+                        <Link
+                          href="#"
+                          className="block p-2 text-gray-600 hover:text-primary"
+                          onClick={onClose}
+                        >
                           Documentation
-                        </a>
-                        <a href="#" className="block p-2 text-gray-600 hover:text-primary">
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block p-2 text-gray-600 hover:text-primary"
+                          onClick={onClose}
+                        >
                           Help Center
-                        </a>
+                        </Link>
                       </div>
                     )}
                   </div>
                 ) : (
-                  <a
+                  <Link
                     href={link.href}
                     className="block p-3 text-primary hover:bg-gray-100 rounded-md transition-colors"
                     onClick={onClose}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}
@@ -78,20 +89,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
           {/* Footer Actions */}
           <div className="p-4 border-t space-y-3">
-            <Button
-              variant="ghost"
-              size="md"
-              className="w-full justify-center"
-              onClick={onClose}
-            >
+            <Button variant="ghost" size="md" className="w-full justify-center" onClick={onClose}>
               Sign In
             </Button>
-            <Button
-              variant="primary"
-              size="md"
-              className="w-full justify-center"
-              onClick={onClose}
-            >
+            <Button variant="primary" size="md" className="w-full justify-center" onClick={onClose}>
               Get Started Free
             </Button>
           </div>
@@ -100,4 +101,3 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
-

@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Menu, ChevronDown, LogIn } from 'lucide-react';
 import { Logo } from '../icons/Logo';
 import { Button } from '../ui';
@@ -34,26 +37,35 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm" role="navigation" aria-label="Main navigation">
+      <nav
+        className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm"
+        role="navigation"
+        aria-label="Main navigation"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo - Left Side */}
-            <button 
+            <Link
+              href="/"
               className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               aria-label="Go to homepage"
             >
               <Logo />
-            </button>
+            </Link>
 
             {/* Desktop Navigation & CTA - Right Side (All Together) */}
             <div className="hidden md:flex items-center gap-6" role="menubar">
               {/* Navigation Links */}
               {NAV_LINKS.map((link) => (
-                <div key={link.label} className="relative" role="none" ref={'hasDropdown' in link && link.hasDropdown ? dropdownRef : null}>
+                <div
+                  key={link.label}
+                  className="relative"
+                  role="none"
+                  ref={'hasDropdown' in link && link.hasDropdown ? dropdownRef : null}
+                >
                   {'hasDropdown' in link && link.hasDropdown ? (
                     <div className="relative">
-                      <button 
+                      <button
                         className="flex items-center gap-1 text-primary hover:text-primary-dark transition-colors"
                         onClick={toggleResources}
                         aria-haspopup="true"
@@ -61,10 +73,16 @@ export const Header: React.FC = () => {
                         aria-label={`${link.label} menu`}
                       >
                         {link.label}
-                        <ChevronDown className={cn('w-4 h-4 transition-transform', resourcesOpen && 'rotate-180')} aria-hidden="true" />
+                        <ChevronDown
+                          className={cn(
+                            'w-4 h-4 transition-transform',
+                            resourcesOpen && 'rotate-180'
+                          )}
+                          aria-hidden="true"
+                        />
                       </button>
                       {resourcesOpen && (
-                        <div 
+                        <div
                           className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50"
                           role="menu"
                           aria-label="Resources submenu"
@@ -89,19 +107,19 @@ export const Header: React.FC = () => {
                       )}
                     </div>
                   ) : (
-                    <a
+                    <Link
                       href={link.href}
                       className="text-primary hover:text-primary-dark transition-colors"
                       role="menuitem"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}
-              
+
               {/* Sign In Link */}
-              <a
+              <Link
                 href="#"
                 className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
                 role="menuitem"
@@ -109,8 +127,8 @@ export const Header: React.FC = () => {
               >
                 <LogIn className="w-4 h-4" aria-hidden="true" />
                 Sign In
-              </a>
-              
+              </Link>
+
               {/* Get Started Free Button */}
               <Button variant="blue" size="md">
                 Get Started Free
@@ -130,11 +148,7 @@ export const Header: React.FC = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <MobileMenu
-        isOpen={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-      />
+      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
     </>
   );
 };
-

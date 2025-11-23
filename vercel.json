@@ -1,14 +1,7 @@
 {
   "buildCommand": "yarn build",
-  "outputDirectory": "dist",
+  "outputDirectory": ".next",
   "devCommand": "yarn dev",
   "installCommand": "yarn install",
-  "framework": "vite",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": "nextjs"
 }
-

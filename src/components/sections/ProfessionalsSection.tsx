@@ -14,10 +14,13 @@ interface FeatureItemProps {
 const FeatureItem: React.FC<FeatureItemProps> = ({ icon, title, description, iconBgColor }) => {
   return (
     <div className="flex items-start gap-4">
-      <div className={cn('w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1', iconBgColor)}>
-        <span className="text-primary [&>svg]:w-5 [&>svg]:h-5">
-          {icon}
-        </span>
+      <div
+        className={cn(
+          'w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1',
+          iconBgColor
+        )}
+      >
+        <span className="text-primary [&>svg]:w-5 [&>svg]:h-5">{icon}</span>
       </div>
       <div>
         <h4 className="text-lg mb-1 text-primary font-semibold">{title}</h4>
@@ -37,7 +40,8 @@ export const ProfessionalsSection: React.FC = () => {
             Built for Aviation Professionals
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Whether you're procuring parts or selling them, we've built the perfect solution
+            Whether you&apos;re procuring parts or selling them, we&apos;ve built the perfect
+            solution
           </p>
         </div>
 
@@ -135,4 +139,3 @@ export const ProfessionalsSection: React.FC = () => {
     </section>
   );
 };
-
